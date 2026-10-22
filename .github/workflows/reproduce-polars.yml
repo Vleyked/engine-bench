@@ -1,0 +1,61 @@
+name: Reproduce Polars dedup
+
+on:
+  push:
+    branches: [bench/polars-dedup]
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      POLARS_MAX_THREADS: '8'
+      PYTHONUNBUFFERED: '1'
+      TZ: Europe/Tallinn
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13.5'
+      - name: Install benchmark dependencies
+        run: python -m pip install duckdb==2.0.0 polars==2.0.0 pyarrow==26.0.0 psutil==7.2.2 numpy==2.5.4
+      - name: Record host
+        run: |
+          sudo swapoff -a
+          mkdir -p results/dedup_linux
+          uname -srmo > results/dedup_linux/host.txt
+          lscpu >> results/dedup_linux/host.txt
+          free -m >> results/dedup_linux/host.txt
+          df -h . >> results/dedup_linux/host.txt
+          python --version >> results/dedup_linux/host.txt
+          python -m pip freeze >> results/dedup_linux/host.txt
+      - name: Check query correctness
+        run: python -m unittest discover -s tests -v
+      - name: Generate matching input
+        run: |
+          python gen_data.py 10
+          python gen_data.py 150
+          python verify_dedup_run.py checksums
+      - name: Benchmark default settings
+        run: python bench.py --sizes 10m,150m --reps 3 --engines polars --queries q3_window_latest,q3_sort_unique_latest --budget-gib 4.5 --tag dedup_linux/default
+      - name: Benchmark 3 GiB spill budget
+        run: python bench.py --sizes 150m --reps 3 --engines polars --queries q3_window_latest,q3_sort_unique_latest --budget-gib 4.5 --env POLARS_OOC_MEMORY_BUDGET_MB=3072 --tag dedup_linux/ooc3g
+      - name: Benchmark 1 GiB spill budget
+        run: python bench.py --sizes 150m --reps 3 --engines polars --queries q3_window_latest,q3_sort_unique_latest --budget-gib 4.5 --env POLARS_OOC_MEMORY_BUDGET_MB=1024 --tag dedup_linux/ooc1g
+      - name: Run DuckDB reference
+        run: python bench.py --sizes 10m,150m --reps 1 --engines duckdb --queries q3_window_latest --budget-gib 4.5 --tag dedup_linux/duckdb
+      - name: Validate full outputs
+        run: python verify_dedup_run.py outputs
+      - name: Summarize results
+        if: always()
+        run: python summarize.py results/dedup_linux > results/dedup_linux/summary.md
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: polars-dedup-linux
+          path: results/dedup_linux/
+          retention-days: 7
+          if-no-files-found: error
