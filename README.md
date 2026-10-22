@@ -137,9 +137,24 @@ What the Polars physical plan shows: the scan and the projections run as streami
 dot -Tsvg plans/polars_dedup_physical_streaming.dot -o plans/polars_dedup.svg   # if Graphviz is installed
 ```
 
+## Alternative Polars dedup
+
+`q3_sort_unique_latest` projects the four output columns, sorts by customer and descending timestamp/order ID, then keeps the first row per customer. Its [physical plan](plans/polars_sort_unique_physical_streaming.dot) uses streaming sort and sorted-unique instead of the window fallback. The original query stays unchanged.
+
+At 150M rows on Linux, it finished 3/3 runs under the 4.5 GiB cap with `POLARS_OOC_MEMORY_BUDGET_MB=1024`, peaking at 2.50–2.74 GiB. Defaults and a 3072 MB spill budget still exceeded the cap. This is a memory tradeoff: median wall time was 90.58 s, versus 17.56 s for one DuckDB reference run. [Results, host and validation](results/dedup_linux/README.md).
+
+```bash
+python bench.py --sizes 150m --reps 3 --engines polars \
+  --queries q3_window_latest,q3_sort_unique_latest --budget-gib 4.5 \
+  --env POLARS_OOC_MEMORY_BUDGET_MB=1024 --tag dedup_sort_unique
+python -m unittest discover -s tests -v
+```
+
+The spill budget is the same undocumented Polars 2.0 setting used above; it does not cap total process RSS. [Windows trials](results/dedup_windows/README.md) still exceeded the cap, so the successful result is specific to the recorded Linux setup.
+
 ## Known limitations
 
-- **Only one Polars formulation of the dedup was tested:** `filter(int_range(len()).over(..., order_by=..., descending=True) == 0)`, the direct translation of the SQL. Other formulations may stream better and were not measured, for example:
+- **The original runs tested one Polars formulation of the dedup:** `filter(int_range(len()).over(..., order_by=..., descending=True) == 0)`, the direct translation of the SQL. Other formulations may stream better and were not measured in those runs, for example:
   - `sort(["customer_id", "ts", "order_id"], descending=[False, True, True]).unique("customer_id", keep="first", maintain_order=False)`
   - `group_by("customer_id").agg(pl.all().sort_by(["ts", "order_id"]).last())`
   - `group_by("customer_id").agg(pl.all().top_k_by(["ts", "order_id"], k=1))` or a `max_by` style aggregation
