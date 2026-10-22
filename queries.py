@@ -66,6 +66,17 @@ def polars_query(name: str, sales: pl.LazyFrame, products: pl.LazyFrame) -> pl.L
                 .sort(["customer_id", "ts", "order_id"],
                       descending=[False, True, True], nulls_last=True)
                 .unique("customer_id", keep="first", maintain_order=False))
+    if name in ("q3_max_join_latest", "q3_max_sort_latest"):
+        rows = sales.select("customer_id", "order_id", "ts", amount.alias("amount"))
+        timestamps = sales.group_by("customer_id").agg(pl.col("ts").max())
+        latest = rows.join(timestamps, on=["customer_id", "ts"], how="semi", nulls_equal=True)
+        if name == "q3_max_sort_latest":
+            return (latest.sort(["customer_id", "order_id"],
+                                descending=[False, True], nulls_last=True)
+                    .unique("customer_id", keep="first", maintain_order=False))
+        orders = latest.group_by("customer_id").agg(pl.col("order_id").max())
+        return (latest.join(orders, on=["customer_id", "order_id"], how="semi", nulls_equal=True)
+                .unique("customer_id", keep="any", maintain_order=False))
     if name == "q4_highcard_agg":
         return (sales.group_by("customer_id")
                 .agg(pl.len().alias("orders"), amount.sum().alias("revenue"),

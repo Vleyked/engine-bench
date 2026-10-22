@@ -1,0 +1,66 @@
+name: Compare faster Polars dedup
+
+on:
+  push:
+    branches: [bench/polars-max-dedup]
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      POLARS_MAX_THREADS: '8'
+      PYTHONUNBUFFERED: '1'
+      TZ: Europe/Tallinn
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13.5'
+      - run: python -m pip install duckdb==2.0.0 polars==2.0.0 pyarrow==26.0.0 psutil==7.2.2 numpy==2.5.4
+      - name: Record host and test
+        run: |
+          sudo swapoff -a
+          mkdir -p results/faster_dedup
+          uname -srmo > results/faster_dedup/host.txt
+          lscpu >> results/faster_dedup/host.txt
+          free -m >> results/faster_dedup/host.txt
+          python --version >> results/faster_dedup/host.txt
+          python -m pip freeze >> results/faster_dedup/host.txt
+          python -m unittest discover -s tests -v
+      - name: Generate and verify input
+        run: |
+          python gen_data.py 10
+          python gen_data.py 150
+          python compare_dedup.py checksums
+      - name: Run DuckDB reference
+        run: python bench.py --sizes 150m --engines duckdb --queries q3_window_latest --reps 1 --budget-gib 4.5 --timeout 120 --tag faster_dedup/duckdb
+      - name: Screen default memory
+        run: python compare_dedup.py screen default
+      - name: Screen 3 GiB spill budget
+        run: python compare_dedup.py screen 3072
+      - name: Screen 2 GiB spill budget
+        run: python compare_dedup.py screen 2048
+      - name: Screen 1 GiB spill budget
+        run: python compare_dedup.py screen 1024
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: dedup-screening
+          path: results/faster_dedup/
+          retention-days: 7
+      - name: Repeat fastest candidate against sort plus unique
+        run: python compare_dedup.py compare
+      - name: Summarize
+        if: always()
+        run: python summarize.py results/faster_dedup > results/faster_dedup/summary.md
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: faster-dedup-linux
+          path: results/faster_dedup/
+          retention-days: 7
+          if-no-files-found: error
