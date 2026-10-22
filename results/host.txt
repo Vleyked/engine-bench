@@ -1,0 +1,12 @@
+=== host
+2026-10-22T10:03:20+03:00
+6.12.94+
+CPU(s):                                  8
+Model name:                              Intel(R) Xeon(R) Processor
+               total        used        free      shared  buff/cache   available
+Mem:           16002        9466        3761         199        3327        6536
+Swap:              0           0           0
+0.24 0.61 0.80 1/1197 428729
+openjdk version "21.0.12.1" 2026-08-18
+Python 3.13.5
+duckdb 2.0.0 polars 2.0.0 pyspark 4.2.0 pyarrow 26.0.0

@@ -1,0 +1,7 @@
+# Generated data (4.4 GB at all three sizes). Recreate with gen_data.py.
+data/
+# Engine outputs and spill directories written by run_engine.py
+out/
+.venv/
+__pycache__/
+*.pyc

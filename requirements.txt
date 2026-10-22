@@ -1,0 +1,7 @@
+# Versions used for the October 22, 2026 run (DuckDB 2.0.0). See VERSIONS.md.
+duckdb==2.0.0
+polars==2.0.0
+pyspark==4.2.0
+pyarrow==26.0.0
+psutil==7.2.2
+numpy==2.5.4

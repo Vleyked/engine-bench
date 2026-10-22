@@ -1,0 +1,11 @@
+=== host
+2026-10-19T10:01:48+03:00
+6.12.94+
+CPU(s):                                  8
+Model name:                              Intel(R) Xeon(R) Processor
+               total        used        free      shared  buff/cache   available
+Mem:           16002        5055        6758         202        4740       10946
+Swap:              0           0           0
+4.11 3.42 1.88 1/1408 98113
+openjdk version "21.0.12.1" 2026-08-18
+Python 3.13.5

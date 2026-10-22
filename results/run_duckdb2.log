@@ -1,0 +1,256 @@
+10m r1 q1_filter_agg      polars    ok wall=   0.27s q=0.087 rss=0.39GiB rows=1000 avail0=6.4 busy0=2% load0=0.2
+10m r1 q1_filter_agg      spark     ok wall=   9.61s q=2.554 rss=1.15GiB rows=1000 avail0=6.4 busy0=2% load0=0.2
+10m r1 q1_filter_agg      duckdb    ok wall=   0.21s q=0.075 rss=0.21GiB rows=1000 avail0=6.5 busy0=16% load0=0.6
+10m r1 q2_join_agg        spark     ok wall=   9.70s q=3.353 rss=1.31GiB rows=18356 avail0=6.4 busy0=18% load0=0.7
+10m r1 q2_join_agg        duckdb    ok wall=   0.38s q=0.196 rss=0.16GiB rows=18356 avail0=6.3 busy0=3% load0=1.2
+10m r1 q2_join_agg        polars    ok wall=   0.38s q=0.157 rss=0.57GiB rows=18356 avail0=6.2 busy0=4% load0=1.1
+10m r1 q3_window_latest   duckdb    ok wall=   0.60s q=0.393 rss=0.65GiB rows=999961 avail0=6.6 busy0=4% load0=1.0
+10m r1 q3_window_latest   polars    ok wall=   1.83s q=1.655 rss=1.20GiB rows=999961 avail0=6.1 busy0=3% load0=1.0
+10m r1 q3_window_latest   spark     ok wall=  12.77s q=6.042 rss=2.94GiB rows=999961 avail0=6.4 busy0=3% load0=1.3
+10m r1 q4_highcard_agg    polars    ok wall=   0.38s q=0.169 rss=0.43GiB rows=999961 avail0=6.4 busy0=3% load0=2.0
+10m r1 q4_highcard_agg    spark     ok wall=  10.68s q=4.654 rss=2.01GiB rows=999961 avail0=6.4 busy0=3% load0=2.0
+10m r1 q4_highcard_agg    duckdb    ok wall=   0.54s q=0.329 rss=0.90GiB rows=999961 avail0=6.2 busy0=2% load0=3.0
+10m r2 q1_filter_agg      spark     ok wall=   8.77s q=2.317 rss=1.39GiB rows=1000 avail0=5.7 busy0=8% load0=3.0
+10m r2 q1_filter_agg      duckdb    ok wall=   0.27s q=0.081 rss=0.21GiB rows=1000 avail0=6.3 busy0=2% load0=2.7
+10m r2 q1_filter_agg      polars    ok wall=   0.27s q=0.078 rss=0.32GiB rows=1000 avail0=6.3 busy0=3% load0=2.4
+10m r2 q2_join_agg        duckdb    ok wall=   0.38s q=0.2 rss=0.16GiB rows=18356 avail0=6.4 busy0=4% load0=2.4
+10m r2 q2_join_agg        polars    ok wall=   0.37s q=0.149 rss=0.58GiB rows=18356 avail0=6.5 busy0=3% load0=2.3
+10m r2 q2_join_agg        spark     ok wall=   9.90s q=3.327 rss=1.15GiB rows=18356 avail0=6.6 busy0=3% load0=2.1
+10m r2 q3_window_latest   polars    ok wall=   1.93s q=1.684 rss=1.19GiB rows=999961 avail0=6.6 busy0=2% load0=2.1
+10m r2 q3_window_latest   spark     ok wall=  12.85s q=6.086 rss=3.01GiB rows=999961 avail0=6.3 busy0=2% load0=1.9
+10m r2 q3_window_latest   duckdb    ok wall=   0.60s q=0.402 rss=0.66GiB rows=999961 avail0=6.4 busy0=10% load0=2.5
+10m r2 q4_highcard_agg    spark     ok wall=   9.99s q=4.203 rss=2.48GiB rows=999961 avail0=6.2 busy0=16% load0=2.4
+10m r2 q4_highcard_agg    duckdb    ok wall=   0.48s q=0.292 rss=0.90GiB rows=999961 avail0=6.1 busy0=2% load0=2.6
+10m r2 q4_highcard_agg    polars    ok wall=   0.36s q=0.187 rss=0.42GiB rows=999961 avail0=5.5 busy0=2% load0=2.6
+10m r3 q1_filter_agg      duckdb    ok wall=   0.21s q=0.076 rss=0.21GiB rows=1000 avail0=5.9 busy0=3% load0=2.4
+10m r3 q1_filter_agg      polars    ok wall=   0.27s q=0.074 rss=0.32GiB rows=1000 avail0=6.0 busy0=3% load0=2.2
+10m r3 q1_filter_agg      spark     ok wall=   8.61s q=2.495 rss=1.13GiB rows=1000 avail0=6.3 busy0=2% load0=2.2
+10m r3 q2_join_agg        polars    ok wall=   0.38s q=0.162 rss=0.61GiB rows=18356 avail0=6.2 busy0=2% load0=3.4
+10m r3 q2_join_agg        spark     ok wall=   9.07s q=3.097 rss=1.61GiB rows=18356 avail0=6.2 busy0=2% load0=3.4
+10m r3 q2_join_agg        duckdb    ok wall=   0.32s q=0.173 rss=0.15GiB rows=18356 avail0=6.2 busy0=9% load0=3.1
+10m r3 q3_window_latest   spark     ok wall=  12.14s q=5.818 rss=2.93GiB rows=999961 avail0=6.1 busy0=4% load0=3.1
+10m r3 q3_window_latest   duckdb    ok wall=   0.56s q=0.397 rss=0.64GiB rows=999961 avail0=6.3 busy0=5% load0=3.8
+10m r3 q3_window_latest   polars    ok wall=   1.82s q=1.592 rss=1.20GiB rows=999961 avail0=6.1 busy0=2% load0=3.5
+10m r3 q4_highcard_agg    duckdb    ok wall=   0.47s q=0.286 rss=0.92GiB rows=999961 avail0=6.4 busy0=3% load0=3.2
+10m r3 q4_highcard_agg    polars    ok wall=   0.49s q=0.276 rss=0.43GiB rows=999961 avail0=6.0 busy0=7% load0=2.9
+10m r3 q4_highcard_agg    spark     ok wall=  10.04s q=4.089 rss=2.25GiB rows=999961 avail0=6.3 busy0=2% load0=2.9
+10m r4 q1_filter_agg      polars    ok wall=   0.27s q=0.071 rss=0.31GiB rows=1000 avail0=6.1 busy0=1% load0=2.6
+10m r4 q1_filter_agg      spark     ok wall=   8.01s q=2.077 rss=1.25GiB rows=1000 avail0=6.2 busy0=2% load0=2.4
+10m r4 q1_filter_agg      duckdb    ok wall=   0.21s q=0.079 rss=0.21GiB rows=1000 avail0=6.5 busy0=1% load0=2.4
+10m r4 q2_join_agg        spark     ok wall=   9.06s q=3.146 rss=1.46GiB rows=18356 avail0=6.4 busy0=10% load0=2.4
+10m r4 q2_join_agg        duckdb    ok wall=   0.32s q=0.178 rss=0.16GiB rows=18356 avail0=6.3 busy0=18% load0=2.1
+10m r4 q2_join_agg        polars    ok wall=   0.32s q=0.146 rss=0.55GiB rows=18356 avail0=6.4 busy0=17% load0=2.0
+10m r4 q3_window_latest   duckdb    ok wall=   0.59s q=0.413 rss=0.66GiB rows=999961 avail0=6.4 busy0=18% load0=2.0
+10m r4 q3_window_latest   polars    ok wall=   1.75s q=1.567 rss=1.20GiB rows=999961 avail0=5.8 busy0=3% load0=1.9
+10m r4 q3_window_latest   spark     ok wall=  12.72s q=6.174 rss=2.95GiB rows=999961 avail0=6.0 busy0=2% load0=1.7
+10m r4 q4_highcard_agg    polars    ok wall=   0.42s q=0.201 rss=0.42GiB rows=999961 avail0=6.2 busy0=2% load0=2.2
+10m r4 q4_highcard_agg    spark     ok wall=  10.67s q=4.236 rss=3.99GiB rows=999961 avail0=6.2 busy0=2% load0=2.0
+10m r4 q4_highcard_agg    duckdb    ok wall=   0.60s q=0.374 rss=0.92GiB rows=999961 avail0=6.2 busy0=2% load0=3.4
+10m r5 q1_filter_agg      spark     ok wall=   8.53s q=2.375 rss=1.17GiB rows=1000 avail0=5.7 busy0=14% load0=4.0
+10m r5 q1_filter_agg      duckdb    ok wall=   0.26s q=0.079 rss=0.21GiB rows=1000 avail0=6.6 busy0=3% load0=4.7
+10m r5 q1_filter_agg      polars    ok wall=   0.27s q=0.082 rss=0.32GiB rows=1000 avail0=6.5 busy0=2% load0=4.4
+10m r5 q2_join_agg        duckdb    ok wall=   0.32s q=0.165 rss=0.16GiB rows=18356 avail0=6.5 busy0=3% load0=4.1
+10m r5 q2_join_agg        polars    ok wall=   0.32s q=0.128 rss=0.55GiB rows=18356 avail0=6.4 busy0=2% load0=4.1
+10m r5 q2_join_agg        spark     ok wall=   9.15s q=3.125 rss=1.57GiB rows=18356 avail0=6.6 busy0=2% load0=3.7
+10m r5 q3_window_latest   polars    ok wall=   1.91s q=1.722 rss=1.20GiB rows=999961 avail0=6.3 busy0=18% load0=3.6
+10m r5 q3_window_latest   spark   watchdog: system available 0.97 GiB < floor 1.0 GiB wall=  13.73s q=- rss=1.64GiB rows=- avail0=6.2 busy0=11% load0=3.0
+  waiting: avail=2.57 GiB cpu_busy=14%
+  waiting: avail=2.49 GiB cpu_busy=7%
+  waiting: avail=2.56 GiB cpu_busy=14%
+  waiting: avail=2.72 GiB cpu_busy=22%
+  waiting: avail=2.72 GiB cpu_busy=23%
+  waiting: avail=4.50 GiB cpu_busy=9%
+  waiting: avail=4.54 GiB cpu_busy=2%
+  waiting: avail=4.58 GiB cpu_busy=3%
+  waiting: avail=4.58 GiB cpu_busy=2%
+  waiting: avail=4.59 GiB cpu_busy=3%
+  waiting: avail=4.59 GiB cpu_busy=9%
+  waiting: avail=4.56 GiB cpu_busy=2%
+  waiting: avail=4.60 GiB cpu_busy=2%
+  waiting: avail=4.57 GiB cpu_busy=2%
+  waiting: avail=4.58 GiB cpu_busy=3%
+  waiting: avail=4.59 GiB cpu_busy=6%
+  waiting: avail=4.95 GiB cpu_busy=2%
+  waiting: avail=4.78 GiB cpu_busy=5%
+  waiting: avail=4.75 GiB cpu_busy=4%
+  waiting: avail=4.75 GiB cpu_busy=2%
+  waiting: avail=4.74 GiB cpu_busy=4%
+  waiting: avail=4.72 GiB cpu_busy=2%
+  waiting: avail=4.77 GiB cpu_busy=2%
+  waiting: avail=4.75 GiB cpu_busy=1%
+  waiting: avail=4.75 GiB cpu_busy=2%
+  waiting: avail=4.76 GiB cpu_busy=2%
+  waiting: avail=4.97 GiB cpu_busy=3%
+  waiting: avail=4.96 GiB cpu_busy=2%
+  waiting: avail=4.96 GiB cpu_busy=10%
+  waiting: avail=4.64 GiB cpu_busy=15%
+  waiting: avail=4.59 GiB cpu_busy=15%
+  waiting: avail=4.55 GiB cpu_busy=19%
+  waiting: avail=4.58 GiB cpu_busy=10%
+  waiting: avail=4.56 GiB cpu_busy=2%
+  waiting: avail=4.59 GiB cpu_busy=2%
+  waiting: avail=4.60 GiB cpu_busy=2%
+  waiting: avail=4.61 GiB cpu_busy=5%
+  waiting: avail=4.96 GiB cpu_busy=2%
+  waiting: avail=4.97 GiB cpu_busy=2%
+  waiting: avail=4.97 GiB cpu_busy=2%
+  waiting: avail=4.97 GiB cpu_busy=9%
+  waiting: avail=4.72 GiB cpu_busy=2%
+  waiting: avail=4.76 GiB cpu_busy=1%
+  waiting: avail=4.76 GiB cpu_busy=5%
+  waiting: avail=4.98 GiB cpu_busy=10%
+  waiting: avail=4.74 GiB cpu_busy=2%
+  waiting: avail=4.77 GiB cpu_busy=2%
+  waiting: avail=4.78 GiB cpu_busy=3%
+  waiting: avail=4.98 GiB cpu_busy=2%
+  waiting: avail=4.97 GiB cpu_busy=2%
+  waiting: avail=4.98 GiB cpu_busy=6%
+  waiting: avail=4.98 GiB cpu_busy=2%
+  waiting: avail=4.97 GiB cpu_busy=9%
+  waiting: avail=4.73 GiB cpu_busy=2%
+  waiting: avail=4.74 GiB cpu_busy=1%
+  waiting: avail=4.80 GiB cpu_busy=4%
+  waiting: avail=4.99 GiB cpu_busy=7%
+  waiting: avail=4.91 GiB cpu_busy=17%
+  waiting: avail=4.84 GiB cpu_busy=19%
+  waiting: avail=4.69 GiB cpu_busy=2%
+  waiting: avail=4.73 GiB cpu_busy=1%
+  waiting: avail=4.99 GiB cpu_busy=2%
+  waiting: avail=4.99 GiB cpu_busy=3%
+  waiting: avail=4.99 GiB cpu_busy=3%
+10m r5 q3_window_latest   duckdb    ok wall=   1.03s q=0.663 rss=0.65GiB rows=999961 avail0=5.0 busy0=9% load0=0.4
+  waiting: avail=4.20 GiB cpu_busy=6%
+  waiting: avail=4.45 GiB cpu_busy=3%
+  waiting: avail=4.65 GiB cpu_busy=2%
+  waiting: avail=4.94 GiB cpu_busy=10%
+  waiting: avail=4.72 GiB cpu_busy=3%
+  waiting: avail=4.73 GiB cpu_busy=2%
+  waiting: avail=4.76 GiB cpu_busy=2%
+  waiting: avail=4.98 GiB cpu_busy=2%
+  waiting: avail=4.98 GiB cpu_busy=2%
+  waiting: avail=4.99 GiB cpu_busy=2%
+  waiting: avail=4.99 GiB cpu_busy=3%
+  waiting: avail=4.99 GiB cpu_busy=10%
+  waiting: avail=4.74 GiB cpu_busy=2%
+  waiting: avail=4.76 GiB cpu_busy=5%
+  waiting: avail=4.99 GiB cpu_busy=2%
+  waiting: avail=4.99 GiB cpu_busy=2%
+  waiting: avail=4.98 GiB cpu_busy=2%
+  waiting: avail=4.98 GiB cpu_busy=2%
+  waiting: avail=4.94 GiB cpu_busy=18%
+  waiting: avail=4.84 GiB cpu_busy=19%
+  waiting: avail=4.62 GiB cpu_busy=3%
+  waiting: avail=4.68 GiB cpu_busy=2%
+  waiting: avail=4.67 GiB cpu_busy=19%
+  waiting: avail=4.82 GiB cpu_busy=17%
+  waiting: avail=4.58 GiB cpu_busy=8%
+  waiting: avail=4.55 GiB cpu_busy=7%
+  waiting: avail=2.24 GiB cpu_busy=20%
+  waiting: avail=2.29 GiB cpu_busy=9%
+  waiting: avail=2.29 GiB cpu_busy=1%
+  waiting: avail=2.30 GiB cpu_busy=2%
+  waiting: avail=2.30 GiB cpu_busy=2%
+  waiting: avail=2.33 GiB cpu_busy=4%
+  waiting: avail=2.53 GiB cpu_busy=7%
+  waiting: avail=4.47 GiB cpu_busy=22%
+  waiting: avail=4.42 GiB cpu_busy=2%
+  waiting: avail=4.48 GiB cpu_busy=3%
+10m r5 q4_highcard_agg    spark     ok wall=  14.15s q=5.849 rss=2.32GiB rows=999961 avail0=6.5 busy0=2% load0=3.2
+10m r5 q4_highcard_agg    duckdb    ok wall=   0.65s q=0.396 rss=0.94GiB rows=999961 avail0=6.6 busy0=3% load0=3.3
+10m r5 q4_highcard_agg    polars    ok wall=   0.48s q=0.196 rss=0.44GiB rows=999961 avail0=5.9 busy0=2% load0=3.0
+wrote results/main.jsonl
+50m r1 q1_filter_agg      polars    ok wall=   0.97s q=0.766 rss=0.85GiB rows=1000 avail0=6.3 busy0=3% load0=3.0
+50m r1 q1_filter_agg      spark     ok wall=  10.90s q=4.105 rss=1.66GiB rows=1000 avail0=6.5 busy0=12% load0=5.1
+50m r1 q1_filter_agg      duckdb    ok wall=   0.49s q=0.285 rss=0.55GiB rows=1000 avail0=6.3 busy0=23% load0=5.0
+50m r1 q2_join_agg        spark     ok wall=  13.74s q=7.181 rss=1.62GiB rows=18356 avail0=5.8 busy0=10% load0=4.7
+50m r1 q2_join_agg        duckdb    ok wall=   0.70s q=0.518 rss=0.34GiB rows=18356 avail0=6.2 busy0=2% load0=4.6
+50m r1 q2_join_agg        polars    ok wall=   0.77s q=0.521 rss=1.58GiB rows=18356 avail0=6.1 busy0=2% load0=4.2
+50m r1 q3_window_latest   duckdb    ok wall=   2.33s q=2.102 rss=2.12GiB rows=4999786 avail0=6.2 busy0=3% load0=4.1
+50m r1 q3_window_latest   polars    ok wall=  11.93s q=11.56 rss=4.38GiB rows=4999786 avail0=5.1 busy0=2% load0=3.8
+50m r1 q3_window_latest   spark     ok wall=  30.40s q=22.482 rss=3.81GiB rows=4999786 avail0=6.5 busy0=3% load0=3.7
+50m r1 q4_highcard_agg    polars    ok wall=   1.60s q=1.304 rss=1.58GiB rows=4999786 avail0=8.3 busy0=8% load0=4.9
+50m r1 q4_highcard_agg    spark     ok wall=  23.34s q=16.328 rss=3.59GiB rows=4999786 avail0=7.7 busy0=3% load0=5.4
+50m r1 q4_highcard_agg    duckdb    ok wall=   2.04s q=1.703 rss=2.98GiB rows=4999786 avail0=8.5 busy0=3% load0=5.8
+50m r2 q1_filter_agg      spark     ok wall=  10.24s q=3.562 rss=1.54GiB rows=1000 avail0=7.3 busy0=4% load0=6.4
+50m r2 q1_filter_agg      duckdb    ok wall=   0.43s q=0.28 rss=0.55GiB rows=1000 avail0=8.2 busy0=2% load0=5.3
+50m r2 q1_filter_agg      polars    ok wall=   0.48s q=0.276 rss=0.76GiB rows=1000 avail0=7.9 busy0=2% load0=4.9
+50m r2 q2_join_agg        duckdb    ok wall=   0.70s q=0.504 rss=0.32GiB rows=18356 avail0=8.3 busy0=2% load0=4.9
+50m r2 q2_join_agg        polars    ok wall=   0.88s q=0.623 rss=1.55GiB rows=18356 avail0=8.1 busy0=4% load0=5.6
+50m r2 q2_join_agg        spark     ok wall=  12.73s q=6.38 rss=1.55GiB rows=18356 avail0=8.3 busy0=7% load0=5.2
+50m r2 q3_window_latest   polars    ok wall=  10.36s q=10.064 rss=4.46GiB rows=4999786 avail0=8.2 busy0=2% load0=4.9
+50m r2 q3_window_latest   spark     ok wall=  26.41s q=19.7 rss=3.77GiB rows=4999786 avail0=8.3 busy0=3% load0=4.0
+50m r2 q3_window_latest   duckdb    ok wall=   2.16s q=1.862 rss=2.19GiB rows=4999786 avail0=8.6 busy0=2% load0=5.1
+50m r2 q4_highcard_agg    spark     ok wall=  21.84s q=15.373 rss=3.66GiB rows=4999786 avail0=7.4 busy0=2% load0=4.7
+50m r2 q4_highcard_agg    duckdb    ok wall=   1.96s q=1.633 rss=3.00GiB rows=4999786 avail0=8.4 busy0=2% load0=5.8
+50m r2 q4_highcard_agg    polars    ok wall=   1.20s q=0.908 rss=1.64GiB rows=4999786 avail0=7.4 busy0=3% load0=5.3
+50m r3 q1_filter_agg      duckdb    ok wall=   0.43s q=0.278 rss=0.58GiB rows=1000 avail0=8.1 busy0=10% load0=5.3
+50m r3 q1_filter_agg      polars    ok wall=   0.54s q=0.282 rss=0.76GiB rows=1000 avail0=7.9 busy0=16% load0=5.1
+50m r3 q1_filter_agg      spark     ok wall=  11.42s q=3.974 rss=1.65GiB rows=1000 avail0=8.3 busy0=18% load0=4.8
+50m r3 q2_join_agg        polars    ok wall=   0.86s q=0.558 rss=1.55GiB rows=18356 avail0=10.1 busy0=3% load0=4.6
+50m r3 q2_join_agg        spark     ok wall=  13.28s q=6.923 rss=1.41GiB rows=18356 avail0=10.0 busy0=5% load0=4.3
+50m r3 q2_join_agg        duckdb    ok wall=   0.70s q=0.55 rss=0.33GiB rows=18356 avail0=10.5 busy0=3% load0=4.5
+50m r3 q3_window_latest   spark     ok wall=  29.06s q=21.806 rss=3.75GiB rows=4999786 avail0=10.4 busy0=2% load0=4.1
+50m r3 q3_window_latest   duckdb    ok wall=   2.41s q=2.137 rss=2.19GiB rows=4999786 avail0=10.2 busy0=8% load0=4.8
+50m r3 q3_window_latest   polars    ok wall=  10.21s q=9.889 rss=4.46GiB rows=4999786 avail0=9.4 busy0=6% load0=4.4
+50m r3 q4_highcard_agg    duckdb    ok wall=   2.17s q=1.896 rss=2.97GiB rows=4999786 avail0=10.1 busy0=2% load0=4.1
+50m r3 q4_highcard_agg    polars    ok wall=   1.30s q=1.008 rss=1.63GiB rows=4999786 avail0=9.3 busy0=1% load0=3.8
+50m r3 q4_highcard_agg    spark     ok wall=  39.40s q=31.174 rss=3.60GiB rows=4999786 avail0=10.1 busy0=0% load0=2.7
+150m r1 q1_filter_agg      polars    ok wall=   3.22s q=2.911 rss=0.80GiB rows=1000 avail0=5.9 busy0=24% load0=6.2
+150m r1 q1_filter_agg      spark     ok wall=  12.99s q=5.417 rss=1.85GiB rows=1000 avail0=5.2 busy0=14% load0=6.3
+150m r1 q1_filter_agg      duckdb    ok wall=   0.93s q=0.72 rss=0.78GiB rows=1000 avail0=7.1 busy0=2% load0=6.0
+150m r1 q2_join_agg        spark     ok wall=  17.70s q=11.35 rss=1.85GiB rows=18356 avail0=6.9 busy0=2% load0=5.5
+150m r1 q2_join_agg        duckdb    ok wall=   1.47s q=1.289 rss=0.42GiB rows=18356 avail0=7.6 busy0=6% load0=5.8
+150m r1 q2_join_agg        polars    ok wall=   1.50s q=1.219 rss=1.96GiB rows=18356 avail0=7.2 busy0=2% load0=5.4
+150m r1 q3_window_latest   duckdb    ok wall=  10.34s q=10.126 rss=3.01GiB rows=14999347 avail0=9.2 busy0=2% load0=5.4
+150m r1 q3_window_latest   polars  watchdog: tree RSS 4.66 GiB > budget 4.5 GiB wall=   1.94s q=- rss=4.66GiB rows=- avail0=10.3 busy0=6% load0=6.5
+150m r1 q3_window_latest   spark   watchdog: tree RSS 7.51 GiB > budget 4.5 GiB wall=  44.84s q=- rss=7.50GiB rows=- avail0=11.1 busy0=2% load0=6.0
+150m r1 q4_highcard_agg    polars    ok wall=   4.21s q=3.813 rss=4.49GiB rows=14999347 avail0=10.7 busy0=2% load0=7.8
+150m r1 q4_highcard_agg    spark     ok wall=  43.26s q=35.571 rss=4.46GiB rows=14999347 avail0=10.4 busy0=4% load0=7.3
+150m r1 q4_highcard_agg    duckdb    ok wall=   7.90s q=7.577 rss=3.01GiB rows=14999347 avail0=11.1 busy0=3% load0=8.2
+150m r2 q1_filter_agg      spark     ok wall=  10.77s q=4.474 rss=1.93GiB rows=1000 avail0=11.0 busy0=2% load0=7.7
+150m r2 q1_filter_agg      duckdb    ok wall=   0.81s q=0.649 rss=0.77GiB rows=1000 avail0=10.5 busy0=3% load0=7.0
+150m r2 q1_filter_agg      polars    ok wall=   0.96s q=0.68 rss=0.96GiB rows=1000 avail0=10.3 busy0=2% load0=6.4
+150m r2 q2_join_agg        duckdb    ok wall=   1.50s q=1.308 rss=0.39GiB rows=18356 avail0=10.8 busy0=2% load0=5.9
+150m r2 q2_join_agg        polars    ok wall=   1.46s q=1.16 rss=1.96GiB rows=18356 avail0=10.6 busy0=5% load0=5.5
+150m r2 q2_join_agg        spark     ok wall=  16.10s q=10.163 rss=1.59GiB rows=18356 avail0=10.8 busy0=10% load0=5.0
+150m r2 q3_window_latest   polars  watchdog: tree RSS 4.52 GiB > budget 4.5 GiB wall=   1.17s q=- rss=4.52GiB rows=- avail0=11.1 busy0=2% load0=6.6
+150m r2 q3_window_latest   spark     ok wall=  47.33s q=40.575 rss=3.73GiB rows=14999347 avail0=10.9 busy0=15% load0=7.1
+150m r2 q3_window_latest   duckdb    ok wall=   7.92s q=7.655 rss=3.01GiB rows=14999347 avail0=10.8 busy0=2% load0=8.4
+150m r2 q4_highcard_agg    spark     ok wall=  39.23s q=32.835 rss=3.72GiB rows=14999347 avail0=10.3 busy0=4% load0=8.5
+150m r2 q4_highcard_agg    duckdb    ok wall=   7.95s q=7.736 rss=3.00GiB rows=14999347 avail0=10.9 busy0=2% load0=8.5
+150m r2 q4_highcard_agg    polars  watchdog: tree RSS 4.55 GiB > budget 4.5 GiB wall=   1.36s q=- rss=4.55GiB rows=- avail0=10.4 busy0=4% load0=8.1
+150m r3 q1_filter_agg      duckdb    ok wall=   0.87s q=0.652 rss=0.77GiB rows=1000 avail0=10.8 busy0=4% load0=7.9
+150m r3 q1_filter_agg      polars    ok wall=   0.86s q=0.64 rss=0.94GiB rows=1000 avail0=10.4 busy0=2% load0=7.3
+150m r3 q1_filter_agg      spark     ok wall=  10.58s q=4.802 rss=1.84GiB rows=1000 avail0=11.0 busy0=2% load0=6.7
+150m r3 q2_join_agg        polars    ok wall=   1.41s q=1.184 rss=1.97GiB rows=18356 avail0=10.5 busy0=20% load0=6.5
+150m r3 q2_join_agg        spark     ok wall=  16.00s q=10.114 rss=1.61GiB rows=18356 avail0=10.6 busy0=21% load0=6.7
+150m r3 q2_join_agg        duckdb    ok wall=   1.47s q=1.292 rss=0.42GiB rows=18356 avail0=11.0 busy0=2% load0=6.3
+150m r3 q3_window_latest   spark     ok wall=  45.25s q=38.412 rss=3.75GiB rows=14999347 avail0=10.9 busy0=2% load0=5.8
+150m r3 q3_window_latest   duckdb    ok wall=   7.48s q=7.253 rss=3.02GiB rows=14999347 avail0=11.2 busy0=9% load0=5.8
+150m r3 q3_window_latest   polars  watchdog: tree RSS 4.65 GiB > budget 4.5 GiB wall=   1.11s q=- rss=4.65GiB rows=- avail0=10.1 busy0=2% load0=5.3
+150m r3 q4_highcard_agg    duckdb    ok wall=   7.91s q=7.727 rss=3.03GiB rows=14999347 avail0=10.8 busy0=2% load0=5.3
+150m r3 q4_highcard_agg    polars  watchdog: tree RSS 4.50 GiB > budget 4.5 GiB wall=   1.25s q=- rss=4.50GiB rows=- avail0=10.3 busy0=5% load0=5.4
+150m r3 q4_highcard_agg    spark     ok wall=  39.70s q=33.026 rss=4.40GiB rows=14999347 avail0=10.9 busy0=2% load0=5.4
+wrote results/main.jsonl
+150m r1 q3_window_latest   duckdb    ok wall=  15.12s q=14.921 rss=1.12GiB rows=14999347 avail0=10.8 busy0=2% load0=6.1
+150m r1 q4_highcard_agg    duckdb    ok wall=  13.94s q=13.769 rss=1.08GiB rows=14999347 avail0=10.4 busy0=13% load0=6.2
+150m r2 q3_window_latest   duckdb    ok wall=  14.97s q=14.774 rss=1.12GiB rows=14999347 avail0=10.9 busy0=2% load0=5.9
+150m r2 q4_highcard_agg    duckdb    ok wall=  14.55s q=14.371 rss=1.08GiB rows=14999347 avail0=10.6 busy0=2% load0=5.9
+150m r3 q3_window_latest   duckdb    ok wall=  14.44s q=14.261 rss=1.12GiB rows=14999347 avail0=10.9 busy0=1% load0=5.6
+150m r3 q4_highcard_agg    duckdb    ok wall=  13.75s q=13.55 rss=1.08GiB rows=14999347 avail0=10.7 busy0=9% load0=5.5
+wrote results/duckdb1g.jsonl
+150m r1 q3_window_latest   duckdb    ok wall=  15.30s q=15.109 rss=1.12GiB rows=14999347 avail0=10.9 busy0=5% load0=5.1
+150m r1 q4_highcard_agg    duckdb    ok wall=  14.22s q=14.034 rss=1.07GiB rows=14999347 avail0=10.6 busy0=18% load0=6.0
+150m r2 q3_window_latest   duckdb    ok wall=  14.94s q=14.75 rss=1.12GiB rows=14999347 avail0=10.9 busy0=5% load0=5.6
+150m r2 q4_highcard_agg    duckdb    ok wall=  13.88s q=13.704 rss=1.08GiB rows=14999347 avail0=10.1 busy0=2% load0=6.1
+150m r3 q3_window_latest   duckdb    ok wall=  14.50s q=14.287 rss=1.11GiB rows=14999347 avail0=10.9 busy0=6% load0=6.2
+150m r3 q4_highcard_agg    duckdb    ok wall=  13.78s q=13.576 rss=1.08GiB rows=14999347 avail0=10.4 busy0=2% load0=6.6
+wrote results/duckdb1g_noorder.jsonl
+150m r1 q3_window_latest   polars  watchdog: tree RSS 4.57 GiB > budget 4.5 GiB wall=   4.65s q=- rss=4.57GiB rows=- avail0=10.8 busy0=2% load0=5.6
+150m r1 q4_highcard_agg    polars    ok wall=   5.20s q=4.881 rss=4.17GiB rows=14999347 avail0=10.7 busy0=2% load0=5.4
+150m r2 q3_window_latest   polars  watchdog: tree RSS 4.66 GiB > budget 4.5 GiB wall=   4.07s q=- rss=4.66GiB rows=- avail0=10.3 busy0=2% load0=5.1
+150m r2 q4_highcard_agg    polars    ok wall=   4.59s q=4.335 rss=4.30GiB rows=14999347 avail0=10.6 busy0=5% load0=4.9
+150m r3 q3_window_latest   polars  watchdog: tree RSS 4.62 GiB > budget 4.5 GiB wall=   3.30s q=- rss=4.62GiB rows=- avail0=10.3 busy0=2% load0=5.0
+150m r3 q4_highcard_agg    polars    ok wall=   4.67s q=4.398 rss=4.18GiB rows=14999347 avail0=10.8 busy0=2% load0=4.7
+wrote results/polars_ooc3g.jsonl
+CORE_DONE
