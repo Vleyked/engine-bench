@@ -1,5 +1,12 @@
 """One query set, three engines. SQL is shared by DuckDB and Spark; Polars gets the same logic as expressions."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import polars as pl
+
 SQL = {
     # Q1: filter + aggregate (the AWS-style scheduled rollup)
     "q1_filter_agg": """
@@ -36,7 +43,7 @@ SQL = {
 }
 
 
-def polars_query(name, sales, products):
+def polars_query(name: str, sales: pl.LazyFrame, products: pl.LazyFrame) -> pl.LazyFrame:
     import polars as pl
     amount = pl.col("qty").cast(pl.Float64) * pl.col("price")
     if name == "q1_filter_agg":
@@ -54,6 +61,11 @@ def polars_query(name, sales, products):
         rn = pl.int_range(pl.len()).over("customer_id", order_by=["ts", "order_id"], descending=True)
         return (sales.filter(rn == 0)
                 .select("customer_id", "order_id", "ts", amount.alias("amount")))
+    if name == "q3_sort_unique_latest":
+        return (sales.select("customer_id", "order_id", "ts", amount.alias("amount"))
+                .sort(["customer_id", "ts", "order_id"],
+                      descending=[False, True, True], nulls_last=True)
+                .unique("customer_id", keep="first", maintain_order=False))
     if name == "q4_highcard_agg":
         return (sales.group_by("customer_id")
                 .agg(pl.len().alias("orders"), amount.sum().alias("revenue"),
